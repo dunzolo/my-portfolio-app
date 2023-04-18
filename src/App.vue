@@ -1,8 +1,11 @@
 <script>
 import AppLogo from './components/AppLogo.vue'
+import AppHeader from './components/AppHeader.vue'
+
 export default {
   components: {
-    AppLogo
+    AppLogo,
+    AppHeader
   },
   data() {
     return {
@@ -27,6 +30,7 @@ export default {
     <AppLogo/>
   </div>
   <div v-else>
+    <AppHeader/>
     <router-view></router-view>
   </div>
 </template>
