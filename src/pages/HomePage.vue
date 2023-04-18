@@ -6,7 +6,9 @@ export default {
 
 <template lang="">
     <div class="container">
-        <h1>Questa è la home page</h1>
+        <p>Ciao, mi chiamo</p>
+        <h1>Davide Rossi.</h1>
+        <p>Sono un Jr Full Stack Web Developer</p>
     </div>
 </template>
 
