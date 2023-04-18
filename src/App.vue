@@ -1,11 +1,13 @@
 <script>
 import AppLogo from './components/AppLogo.vue'
 import AppHeader from './components/AppHeader.vue'
+import AppWrapper from './components/AppWrapper.vue'
 
 export default {
   components: {
     AppLogo,
-    AppHeader
+    AppHeader,
+    AppWrapper
   },
   data() {
     return {
@@ -31,10 +33,20 @@ export default {
   </div>
   <div v-else>
     <AppHeader/>
-    <router-view></router-view>
+    <main>
+      <AppWrapper/>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
 <style lang="scss">
-@use './style/generals.scss'
+@use './style/generals.scss';
+
+main {
+  width: 90%;
+  height: calc(100vh - 80px);
+  margin: 80px auto 0;
+  display: flex;
+}
 </style>

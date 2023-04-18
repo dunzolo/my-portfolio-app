@@ -6,16 +6,15 @@ export default {
 
 <template lang="">
     <header>
-        <div class="logo">
-            <img src="/my_portfolio_logo.svg" alt="logo">
-        </div>
         <nav>
+            <div class="logo">
+                <img src="/my_portfolio_logo.svg" alt="logo">
+            </div>
             <ul>
-                <li><span class="index">01.</span> Home</li>
-                <li><span class="index">02.</span> Chi Sono</li>
-                <li><span class="index">03.</span> Esperienza</li>
-                <li><span class="index">04.</span> Progetti</li>
-                <li><span class="index">05.</span> Contattami</li>
+                <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
+                <li><span class="index">02.</span> Esperienza</li>
+                <li><span class="index">03.</span> Progetti</li>
+                <li><span class="index">04.</span> Contattami</li>
             </ul>
         </nav>
     </header>
@@ -25,33 +24,44 @@ export default {
 @use '../style/partials/variables' as *;
 @use '../style/partials/mixins' as *;
 
-header{
+header {
     height: 80px;
-    width: 90%;
-    margin: 0 auto;
-    @include flex-between;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
 
-    .logo{
-        height: 100%;
-        @include flex-center;
+    nav {
+        width: 90%;
+        @include flex-between;
 
-        img{
-            // height: 100%;
-            width: 80px;
+        .logo {
+            height: 100%;
+            @include flex-center;
+
+            img {
+                width: 80px;
+            }
         }
-    }
 
-    nav ul{
-        list-style-type: none;
-        display: flex;
+        ul {
+            list-style-type: none;
+            display: flex;
 
-        li{
-            padding: 10px;
+            li {
+                padding: 10px;
 
-            .index{
-                color: $secondary_color;
+                .index {
+                    color: $secondary_color;
+                }
             }
         }
     }
+
+
 }
 </style>
