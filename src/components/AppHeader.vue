@@ -8,13 +8,13 @@ export default {
     <header>
         <nav>
             <div class="logo">
-                <img src="/my_portfolio_logo.svg" alt="logo">
+                <a href="/"><img src="/my_portfolio_logo.svg" alt="logo"></a>
             </div>
             <ul>
                 <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
-                <li><span class="index">02.</span> Esperienza</li>
-                <li><span class="index">03.</span> Progetti</li>
-                <li><span class="index">04.</span> Contattami</li>
+                <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>
+                <li><a href="#projects"><span class="index">03.</span> Progetti</a></li>
+                <li><a href=""><span class="index">04.</span> Contattami</a></li>
             </ul>
         </nav>
     </header>
@@ -55,6 +55,15 @@ header {
             li {
                 padding: 10px;
 
+                a {
+                    text-decoration: none;
+                    color: black;
+
+                    &:hover {
+                        color: $secondary_color;
+                    }
+                }
+
                 .index {
                     color: $secondary_color;
                 }
@@ -63,5 +72,11 @@ header {
     }
 
 
+}
+
+@media screen and (max-width: 576px) {
+    header nav ul {
+        display: none;
+    }
 }
 </style>

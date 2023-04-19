@@ -7,10 +7,10 @@ export default {
 <template lang="">
     <div class="wrapper">
         <ul>
-            <li><i class="fa-brands fa-github fa-2x"></i></li>
-            <li><i class="fa-brands fa-linkedin-in fa-2x"></i></li>
-            <li><i class="fa-brands fa-instagram fa-2x"></i></li>
-            <li><i class="fa-regular fa-envelope fa-2x"></i></li>
+            <li><a href="https://github.com/dunzolo"><i class="fa-brands fa-github fa-2x"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/davide-rossi-95b478214/"><i class="fa-brands fa-linkedin-in fa-2x"></i></a></li>
+            <li><a href="https://instagram.com/dunzolo?igshid=ZDdkNTZiNTM="><i class="fa-brands fa-instagram fa-2x"></i></a></li>
+            <li><a href=""><i class="fa-regular fa-envelope fa-2x"></i></a></li>
         </ul>
     </div>
 </template>
@@ -32,6 +32,21 @@ ul {
 
     li {
         padding-bottom: 1rem;
+
+        a {
+            text-decoration: none;
+            color: black;
+
+            &:hover {
+                color: $secondary_color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .wrapper {
+        display: none;
     }
 }
 </style>
