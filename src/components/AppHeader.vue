@@ -9,7 +9,7 @@ export default {
 }
 </script>
 
-<template lang="">
+<!-- <template lang="">
     <header>
         <nav>
             <div class="logo">
@@ -40,6 +40,46 @@ export default {
                     </div>
                 </transition>
             </div>
+        </nav>
+    </header>
+</template> -->
+
+<template>
+    <header>
+        <nav class="navbar">
+
+
+            <div class="logo">
+                <a href="/"><img src="/my_portfolio_logo.svg" alt="logo"></a>
+            </div>
+            <div id="navbar-list">
+                <ul>
+                    <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
+                    <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>
+                    <li><a href="#projects"><span class="index">03.</span> Progetti</a></li>
+                    <li><a href=""><span class="index">04.</span> Contattami</a></li>
+                </ul>
+            </div>
+            <div id="sidemenu">
+                <button class="sidemenu__btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                    <span class="top"></span>
+                    <span class="mid"></span>
+                    <span class="bottom"></span>
+                </button>
+            </div>
+
+            <div class="offcanvas offcanvas-end vh-100" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-body">
+                    <ul class="sidemenu__list">
+                        <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
+                        <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>
+                        <li><a href="#projects"><span class="index">03.</span> Progetti</a></li>
+                        <li><a href=""><span class="index">04.</span> Contattami</a></li>
+                    </ul>
+                </div>
+            </div>
+
         </nav>
     </header>
 </template>
@@ -96,6 +136,37 @@ header {
             }
         }
 
+        .sidemenu__list {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            list-style-type: none;
+
+            li {
+                padding: 10px;
+
+                a {
+                    text-decoration: none;
+                    color: black;
+
+                    &:hover {
+                        color: $secondary_color;
+                    }
+                }
+
+                .index {
+                    color: $secondary_color;
+                }
+            }
+        }
+
         #sidemenu {
             display: none;
 
@@ -107,7 +178,7 @@ header {
                     background: transparent;
                     border: none;
                     position: relative;
-                    z-index: 100;
+                    z-index: 2000;
                     appearance: none;
                     cursor: pointer;
                     outline: none;
@@ -160,36 +231,7 @@ header {
                     background-color: white;
                 }
 
-                &__list {
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    padding-top: 50px;
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                    text-align: center;
-                    list-style-type: none;
 
-                    li {
-                        padding: 10px;
-
-                        a {
-                            text-decoration: none;
-                            color: black;
-
-                            &:hover {
-                                color: $secondary_color;
-                            }
-                        }
-
-                        .index {
-                            color: $secondary_color;
-                        }
-                    }
-                }
             }
         }
     }
