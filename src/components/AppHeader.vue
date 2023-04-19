@@ -1,9 +1,9 @@
 <script>
+import { store } from '../store.js';
 export default {
     data() {
         return {
-            navOpen: false,
-            showNavbar: false
+            store
         }
     },
 }
@@ -24,13 +24,13 @@ export default {
                 </ul>
             </div>
             <div id="sidemenu">
-                <button class="sidemenu__btn" v-on:click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
-                    <span class="top" :class="showNavbar ? 'color-black' : ''"></span>
-                    <span class="mid" :class="showNavbar ? 'color-black' : ''"></span>
-                    <span class="bottom" :class="showNavbar ? 'color-black' : ''"></span>
+                <button class="sidemenu__btn" v-on:click="store.navOpen=!store.navOpen" v-bind:class="{active:store.navOpen}">
+                    <span class="top"></span>
+                    <span class="mid"></span>
+                    <span class="bottom"></span>
                 </button>
                 <transition name="translateX">
-                    <div class="sidemenu__wrapper" v-show="navOpen">
+                    <div class="sidemenu__wrapper" v-show="store.navOpen">
                         <ul class="sidemenu__list">
                             <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
                             <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>

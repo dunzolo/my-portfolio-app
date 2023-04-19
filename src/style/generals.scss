@@ -1,7 +1,26 @@
+@import "node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;800&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+// ------------------------------------
+// remove bootrap default value
+// ------------------------------------
+ul {
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.container {
+    margin: 0;
+}
+
+// ------------------------------------
