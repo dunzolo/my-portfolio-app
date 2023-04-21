@@ -1,4 +1,5 @@
 <script>
+import { store } from './store.js';
 import AppLogo from './components/AppLogo.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppWrapper from './components/AppWrapper.vue'
@@ -11,6 +12,7 @@ export default {
   },
   data() {
     return {
+      store,
       loading: true
     }
   },
@@ -31,7 +33,7 @@ export default {
   <div v-if="loading">
     <AppLogo/>
   </div>
-  <div v-else>
+  <div v-else :class="store.navOpen ? 'blur' : ''">
     <AppHeader/>
     <main>
       <AppWrapper/>
@@ -42,6 +44,10 @@ export default {
 
 <style lang="scss">
 @use './style/generals.scss';
+
+.blur {
+  overflow: hidden;
+}
 
 main {
   width: 90%;

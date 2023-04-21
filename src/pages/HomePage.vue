@@ -47,12 +47,14 @@ export default {
         .description {
             font-family: 'Barlow Semi Condensed';
             font-size: 2rem;
+            font-weight: 400;
         }
 
         .name {
             font-family: 'Barlow Semi Condensed';
             color: $secondary_color;
             font-size: 5rem;
+            font-weight: 700;
         }
     }
 
