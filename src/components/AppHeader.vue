@@ -236,6 +236,11 @@ header {
         }
     }
 
+    .offcanvas {
+        background-color: #cececc;
+
+    }
+
     .translateX-enter {
         transform: translateX(-200px);
         opacity: 0;
