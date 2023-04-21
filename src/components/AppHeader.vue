@@ -98,6 +98,7 @@ header {
     top: 0;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
+    z-index: 1;
 
     nav {
         width: 90%;
