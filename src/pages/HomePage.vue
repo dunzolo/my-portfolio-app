@@ -1,6 +1,25 @@
 <script>
 export default {
+    data() {
+        return {
+            is_active: 'btn-0'
+        }
+    },
+    methods: {
+        isActive(id) {
+            if (this.is_active == 'btn-0') {
+                document.getElementById('btn-0').classList.remove('active');
+                this.is_active = id;
+                document.getElementById(this.is_active).classList.add('active');
+            }
+            else {
+                document.getElementById(this.is_active).classList.remove('active');
+                document.getElementById(id).classList.add('active');
+                this.is_active = id;
 
+            }
+        }
+    },
 }
 </script>
 
@@ -19,9 +38,9 @@ export default {
             <div class="container p-0">
                 <div class="row">
                     <!-- presentation -->
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-8 pe-lg-3 col-md-12 p-md-0">
                         <div class="pb-3">
-                            <h2 class="greeting"><span class="index">01.</span> Chi sono</h2>
+                            <h2 class="greeting pb-3"><span class="index">01.</span> Chi sono</h2>
                             <p class="">
                                 Ciao, mi chiamo Davide Rossi Sono sempre stato un appassionato della tecnologia e di computer, ho deciso di dedicarmi intensamente alla programmazione web perchè mi affascina dal punto di vista realizzativo: mettere mano al codice, essere creativi e veder crescere sempre di più il proprio progetto.
                                 Per rimanere al passo con la tecnologia, bisogna essere in continua evoluzione e di conseguenza non si smette mai di imparare qualcosa di nuovo
@@ -56,6 +75,56 @@ export default {
                 </div>
             </div>
         </section>
+
+        <!-- exprecience -->
+        <section id="experience">
+            <div class="container p-0">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-10">
+                        <h2 class="greeting pb-3"><span class="index">02.</span> Esperienza</h2>
+                        <div class="row">
+                            <div class="col-3 d-flex flex-column">
+                                <button id="btn-0" type="button" class="work active" @click="isActive($event.target.id)">Boolean</button>
+                                <button id="btn-1" type="button" class="work" @click="isActive($event.target.id)">TAIC</button>
+                                <button id="btn-2" type="button" class="work" @click="isActive($event.target.id)">Elfo</button>
+                            </div>
+                            <div class="col-9">
+                                <div :class="this.is_active == 'btn-0' ? 'd-block' : 'd-none'">
+                                    <p>Jr Full Stack Web Developer Trainee</p>
+                                    <p>Boolean Careers | ott 2022 - mar 2023</p>
+                                    <hr>
+                                    <p>
+                                        Durante il percorso con Boolean ho avuto modo di applicare le tecnologie Front-end e Back-end realizzando partendo da zero, sia in autonomia che in team, vari progetti di sviluppo web.
+                                    </p>
+                                </div>
+                                <div :class="this.is_active == 'btn-1' ? 'd-block' : 'd-none'">
+                                    <p>Responsabile della Produzione</p>
+                                    <p>T.A.I.C. srl | apr 2016 - set 2022</p>
+                                    <hr>
+                                    <p>Settore: Automazioni elettriche industriali</p>
+                                    <ul class="ps-4">
+                                        <li>concordare gli impegni in base al programma lavori stabilito</li>
+                                        <li> monitorare e risolvere eventuali problemi legati all’attività produttiva</li>
+                                        <li>verificare che la quantità e la qualità dei prodotti rispetti le esigenze del cliente</li>
+                                        <li>controllo e gestione ordini materiali di utilizzo</li>
+                                    </ul>
+                                </div>
+                                <div :class="this.is_active == 'btn-2' ? 'd-block' : 'd-none'">
+                                    <p>Software Developer Assistant - Stage</p>
+                                    <p>Elfo srl | gen 2015 - giu 2015</p>
+                                    <hr>
+                                    <p>Settore: Software house</p>
+                                    <p>
+                                        Durante il periodo trascorso ho avuto modo di sviluppare software utilizzando il linguaggio C# e svolgere attività su database tramite SQL Server
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -63,12 +132,9 @@ export default {
 @use '../style/partials/variables' as *;
 @use '../style/partials/mixins' as *;
 
-#about-me {
+#about-me,
+#experience {
     padding: 5rem 0;
-
-    .col-md-12 {
-        padding: 0;
-    }
 }
 
 .full-content {
@@ -133,6 +199,23 @@ export default {
     .index {
         color: $secondary_color;
     }
+}
+
+.work {
+    padding: 5px 0;
+    background-color: transparent;
+    border: none;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    ;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.active {
+    border-left: 2px solid $secondary_color;
+    color: $secondary_color;
 }
 
 @media screen and (max-width:1080px) {
