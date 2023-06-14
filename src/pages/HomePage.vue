@@ -1,5 +1,9 @@
 <script>
+import AppProjects from '../components/AppProjects.vue';
 export default {
+    components: {
+        AppProjects
+    },
     data() {
         return {
             is_active: 'btn-0'
@@ -84,21 +88,28 @@ export default {
                         <h2 class="greeting pb-3"><span class="index">02.</span> Esperienza</h2>
                         <div class="row">
                             <div class="col-3 d-flex flex-column">
-                                <button id="btn-0" type="button" class="work active" @click="isActive($event.target.id)">Boolean</button>
-                                <button id="btn-1" type="button" class="work" @click="isActive($event.target.id)">TAIC</button>
-                                <button id="btn-2" type="button" class="work" @click="isActive($event.target.id)">Elfo</button>
+                                <button id="btn-0" type="button" class="work active" @click="isActive($event.target.id)">Experis Academy</button>
+                                <button id="btn-1" type="button" class="work" @click="isActive($event.target.id)">Boolean</button>
+                                <button id="btn-2" type="button" class="work" @click="isActive($event.target.id)">TAIC</button>
+                                <button id="btn-3" type="button" class="work" @click="isActive($event.target.id)">Elfo</button>
                             </div>
                             <div class="col-9">
                                 <div :class="this.is_active == 'btn-0' ? 'd-block' : 'd-none'">
-                                    <p>Jr Full Stack Web Developer Trainee</p>
+                                    <p><strong>Java Developer Trainee</strong></p>
+                                    <p>Experis Academy | mag 2023 - giu 2023</p>
+                                    <hr>
+                                    <p>Teoria, esercizi pratici, progetti sul framework <strong>Spring</strong> e linguaggio <strong>Java</strong></p>
+                                </div>
+                                <div :class="this.is_active == 'btn-1' ? 'd-block' : 'd-none'">
+                                    <p><strong>Jr Full Stack Web Developer Trainee</strong></p>
                                     <p>Boolean Careers | ott 2022 - mar 2023</p>
                                     <hr>
                                     <p>
-                                        Durante il percorso con Boolean ho avuto modo di applicare le tecnologie Front-end e Back-end realizzando partendo da zero, sia in autonomia che in team, vari progetti di sviluppo web.
+                                        Durante il percorso con Boolean ho avuto modo di applicare le tecnologie <strong>Front-end</strong> e <strong>Back-end</strong> realizzando partendo da zero, sia in autonomia che in team, vari progetti di sviluppo web.
                                     </p>
                                 </div>
-                                <div :class="this.is_active == 'btn-1' ? 'd-block' : 'd-none'">
-                                    <p>Responsabile della Produzione</p>
+                                <div :class="this.is_active == 'btn-2' ? 'd-block' : 'd-none'">
+                                    <p><strong>Responsabile della Produzione</strong></p>
                                     <p>T.A.I.C. srl | apr 2016 - set 2022</p>
                                     <hr>
                                     <p>Settore: Automazioni elettriche industriali</p>
@@ -109,13 +120,13 @@ export default {
                                         <li>controllo e gestione ordini materiali di utilizzo</li>
                                     </ul>
                                 </div>
-                                <div :class="this.is_active == 'btn-2' ? 'd-block' : 'd-none'">
-                                    <p>Software Developer Assistant - Stage</p>
+                                <div :class="this.is_active == 'btn-3' ? 'd-block' : 'd-none'">
+                                    <p><strong>Software Developer Assistant - Stage</strong></p>
                                     <p>Elfo srl | gen 2015 - giu 2015</p>
                                     <hr>
                                     <p>Settore: Software house</p>
                                     <p>
-                                        Durante il periodo trascorso ho avuto modo di sviluppare software utilizzando il linguaggio C# e svolgere attività su database tramite SQL Server
+                                        Durante il periodo trascorso ho avuto modo di <strong>sviluppare software</strong> utilizzando il linguaggio <strong>C#</strong> e svolgere attività su database tramite <strong>SQL Server</strong>
                                     </p>
                                 </div>
                             </div>
@@ -155,6 +166,8 @@ export default {
                 </div>
             </div>
         </section>
+
+        <AppProjects/>
     </div>
 </template>
 
