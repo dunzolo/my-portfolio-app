@@ -142,27 +142,7 @@ export default {
             <div class="container p-0">
                 <h2 class="greeting pb-3"><span class="index">03.</span> Progetti</h2>
                 <div class="row">
-                    <div class="col-lg-4 col-lg-d-flex col-md-12 p-md-0 project-caption">
-                        <h3>Netflix</h3>
-                        <div class="caption">
-                            <p class="">
-                                Replica del famoso sito Netflix utilizzando una chiamata API che ci permette di visualizzare i vari contenuti
-                            </p>
-                            <ul class="ps-4">
-                                <li>funzionalità: ricerca dei titoli, visualizzazione dettagli</li>
-                            </ul>
-                        </div>
-                        <ul class="tech-list">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Boostrap</li>
-                            <li>Vue Js</li>
-                            <li>Javascript</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-8 col-md-12 project-image">
-                        <img src="/public/my-portfolio-boolflix.jpg" alt="boolflix">
-                    </div>
+                    
                 </div>
             </div>
         </section>

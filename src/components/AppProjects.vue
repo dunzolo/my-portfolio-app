@@ -1,4 +1,6 @@
 <script>
+import { store } from '../store';
+
 import { defineComponent } from 'vue'
 import { Pagination, EffectCoverflow } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -13,6 +15,11 @@ export default defineComponent({
     components: {
         Swiper,
         SwiperSlide
+    },
+    data() {
+        return {
+            store
+        }
     },
     setup() {
         return {
@@ -32,17 +39,17 @@ export default defineComponent({
                 modifier: 1,
                 slideShadows: true
             }">
-            <swiper-slide class="slide" v-for="index in 8" :key="index">
-                <!-- <span>#1</span>
-                <img src="/public/my-portfolio-boolflix.jpg" />
-                <p>Netflix</p> -->
+            <swiper-slide class="slide" v-for="(item, index) in store.projects" :key="index">
                 <div class="post-card">
                     <div class="avatar"></div>
-                    <a class="title" href="#">7 Tools for Faster Development in React</a>
+                    <a class="title" href="#">{{ item.description }}</a>
                     <span class="datetime">3 min to read</span>
-                    <div class="image-preview"></div>
+                    <div class="image-preview" :style="{ 'background-image': 'url(' + item.image + ')' }"></div>
                     <div class="comment-like">
-                        <span><svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg"
+                        <router-link :to="{ name: 'project', params: { id: item.id } }" class="btn btn-sm btn-success">
+                            Continua a leggere
+                        </router-link>
+                        <!-- <span><svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -60,7 +67,7 @@ export default defineComponent({
                                         d="M4.49999 20.25C4.37892 20.2521 4.25915 20.2248 4.1509 20.1705C4.04266 20.1163 3.94916 20.0366 3.87841 19.9383C3.80766 19.8401 3.76175 19.7261 3.74461 19.6063C3.72747 19.4864 3.73961 19.3641 3.77999 19.25L5.37999 14C5.03175 13.0973 4.85539 12.1375 4.85999 11.17C4.8584 10.1057 5.06918 9.0518 5.47999 8.06999C5.88297 7.13047 6.45975 6.27549 7.17999 5.54999C7.90382 4.82306 8.76344 4.24545 9.70999 3.84999C10.6889 3.4344 11.7415 3.22021 12.805 3.22021C13.8685 3.22021 14.9211 3.4344 15.9 3.84999C17.3341 4.46429 18.5573 5.48452 19.4191 6.7851C20.2808 8.08568 20.7434 9.60985 20.75 11.17C20.7437 13.2771 19.9065 15.2966 18.42 16.79C17.6945 17.5102 16.8395 18.087 15.9 18.49C14.0091 19.2819 11.8865 19.3177 9.96999 18.59L4.71999 20.19C4.64977 20.22 4.57574 20.2402 4.49999 20.25ZM12.8 4.74999C11.5334 4.75547 10.2962 5.13143 9.24068 5.83153C8.18519 6.53164 7.35763 7.52528 6.85999 8.68999C6.19883 10.2911 6.19883 12.0889 6.85999 13.69C6.91957 13.8548 6.91957 14.0352 6.85999 14.2L5.62999 18.37L9.77999 17.11C9.94477 17.0504 10.1252 17.0504 10.29 17.11C11.0824 17.439 11.932 17.6083 12.79 17.6083C13.648 17.6083 14.4976 17.439 15.29 17.11C16.0708 16.7813 16.779 16.3018 17.3742 15.6989C17.9693 15.096 18.4397 14.3816 18.7583 13.5967C19.077 12.8118 19.2376 11.9717 19.231 11.1245C19.2244 10.2774 19.0508 9.4399 18.72 8.65999C18.2234 7.50094 17.398 6.51285 16.3459 5.81792C15.2937 5.123 14.0609 4.75171 12.8 4.74999Z"
                                         fill=""></path>
                                 </g>
-                            </svg>4</span>
+                            </svg>4</span> -->
                     </div>
 
 
@@ -168,8 +175,10 @@ export default defineComponent({
     min-height: 150px;
     width: 100%;
     border-radius: 20px;
-    background-color: blueviolet;
-    background-image: linear-gradient(to top left, blueviolet, rgb(73, 31, 112));
+    // background-color: blueviolet;
+    // background-image: linear-gradient(to top left, blueviolet, rgb(73, 31, 112));
+    // background-image: url('/public/my-portfolio-boolflix.jpg');
+    background-size: cover;
     margin-bottom: 4px;
 }
 
