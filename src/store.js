@@ -16,6 +16,12 @@ export const store = reactive({
             image: '/public/my-portfolio-boolflix.jpg',
             image_project: '/public/my-portfolio-boolflix-pc.png',
             description: 'seconda descrizione'
+        },
+        {
+            id: 3,
+            image: '/public/my-portfolio-boolflix.jpg',
+            image_project: '/public/my-portfolio-boolflix-pc.png',
+            description: 'terza descrizione'
         }
     ]
 })

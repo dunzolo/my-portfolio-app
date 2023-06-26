@@ -142,12 +142,11 @@ export default {
             <div class="container p-0">
                 <h2 class="greeting pb-3"><span class="index">03.</span> Progetti</h2>
                 <div class="row">
-                    
+                    <AppProjects/>
                 </div>
             </div>
         </section>
 
-        <AppProjects/>
     </div>
 </template>
 
