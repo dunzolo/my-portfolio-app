@@ -43,7 +43,7 @@ export default defineComponent({
                 <div class="post-card">
                     <div class="post-card-top">
                         <div class="avatar"><span>{{ item.id }}</span></div>
-                        <div class="title"><span>{{ item.description }}</span></div>
+                        <div class="title"><span>{{ item.title }}</span></div>
                     </div>
                     <div class="image-preview" :style="{ 'background-image': 'url(' + item.image + ')' }"></div>
                     <div class="comment-like">

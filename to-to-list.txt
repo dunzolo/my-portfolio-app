@@ -1,0 +1,3 @@
+- header
+    - link navbar se sono nella pagina di dettaglio dei progetti non funziona correttamente (se inserisco / mi ricarica tutto dall'inizio e rimane nella parte alta)
+       
