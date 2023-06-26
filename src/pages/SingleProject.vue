@@ -29,7 +29,25 @@ export default {
             </div>
         </div>
         <div id="details" class="image">
-            <img :src="this.project.image_project" alt="">
+            <img :src="this.project.image_project" alt="image-datail">
+        </div>
+        <div class="content">
+            <div class="content-desc">
+                <h2 class="content-title">Descrizione</h2>
+                <p class="content-paragraph" v-for="desc in this.project.description">{{ desc }}</p>
+            </div>
+            <div class="content-tools">
+                <h2 class="content-title">Tecnologie</h2>
+                <div class="skills">
+                    <div class="single-skill" v-for="skill in this.project.skills">{{ skill }}</div>
+                </div>
+            </div>
+            <div class="content-links">
+                <h2 class="content-title">Links</h2>
+                <a href="" class="btn btn-sm website">Sito web</a>
+                <a :href="this.project.link_github" class="btn btn-sm github">Repo GitHub</a>
+                <a href="/" class="btn btn-sm back">Indietro</a>
+            </div>
         </div>
     </div>
 </template>
@@ -56,7 +74,9 @@ export default {
             font-weight: 600;
             padding: 0.5rem 7rem;
             background-color: $secondary_color;
+            // color: rgba(0, 0, 0, 0.7);
             box-shadow: 0 10px 15px 0 rgba($color: #000000, $alpha: 0.5);
+            border-radius: 5px;
         }
     }
 }
@@ -77,5 +97,65 @@ export default {
     img {
         width: 90%;
     }
+}
+
+.content {
+    margin: auto;
+    max-width: 70rem;
+
+    .content-desc,
+    .content-tools,
+    .content-links {
+        margin: 0 0 7rem 0;
+
+        .content-title {
+            margin-bottom: 3rem;
+            font-weight: 600;
+            font-size: 2.5rem;
+        }
+
+        .content-paragraph {
+            font-size: 1.8rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+
+            .single-skill {
+                padding: 1rem 2rem;
+                margin-bottom: 1rem;
+                margin-right: 1rem;
+                font-size: 1rem;
+                font-weight: 600;
+                background: rgba(153, 153, 153, 0.2);
+                // color: rgba(0, 0, 0, 0.7);
+                border-radius: 5px;
+                text-transform: uppercase;
+            }
+        }
+
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-right: 1.5rem;
+
+            &.github,
+            &.website {
+                background-color: $secondary_color;
+            }
+
+            &.back {
+                background-color: transparent;
+                border: 2px solid $secondary_color;
+            }
+        }
+    }
+
 }
 </style>
