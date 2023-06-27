@@ -9,54 +9,29 @@ export default {
 }
 </script>
 
-<!-- <template lang="">
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="/"><img src="/my_portfolio_logo.svg" alt="logo"></a>
-            </div>
-            <div id="navbar-list">
-                <ul>
-                    <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
-                    <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>
-                    <li><a href="#projects"><span class="index">03.</span> Progetti</a></li>
-                    <li><a href=""><span class="index">04.</span> Contattami</a></li>
-                </ul>
-            </div>
-            <div id="sidemenu">
-                <button class="sidemenu__btn" v-on:click="store.navOpen=!store.navOpen" v-bind:class="{active:store.navOpen}">
-                    <span class="top"></span>
-                    <span class="mid"></span>
-                    <span class="bottom"></span>
-                </button>
-                <transition name="translateX">
-                    <div class="sidemenu__wrapper" v-show="store.navOpen">
-                        <ul class="sidemenu__list">
-                            <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
-                            <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>
-                            <li><a href="#projects"><span class="index">03.</span> Progetti</a></li>
-                            <li><a href=""><span class="index">04.</span> Contattami</a></li>
-                        </ul>
-                    </div>
-                </transition>
-            </div>
-        </nav>
-    </header>
-</template> -->
-
 <template>
     <header>
         <nav class="navbar">
-
-
             <div class="logo">
                 <a href="/"><img src="/my_portfolio_logo.svg" alt="logo"></a>
             </div>
             <div id="navbar-list">
                 <ul>
-                    <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
-                    <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>
-                    <li><a href="#projects"><span class="index">03.</span> Progetti</a></li>
+                    <li>
+                        <router-link :to="{ name: 'homepage', hash: '#about-me' }">
+                            <span class="index">01.</span>Chi Sono
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{ name: 'homepage', hash: '#experience' }">
+                            <span class="index">02.</span>Esperienza
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{ name: 'homepage', hash: '#projects' }">
+                            <span class="index">03.</span>Progetti
+                        </router-link>
+                    </li>
                     <li><a href=""><span class="index">04.</span> Contattami</a></li>
                 </ul>
             </div>
@@ -79,7 +54,6 @@ export default {
                     </ul>
                 </div>
             </div>
-
         </nav>
     </header>
 </template>

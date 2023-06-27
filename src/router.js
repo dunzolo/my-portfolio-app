@@ -19,7 +19,28 @@ const router = createRouter({
             name: 'project',
             component: SingleProject,
         }
-    ]
+    ],
+    // scrollBehavior(to, from, savedPosition) {
+    //     if (to.hash) {
+    //         return {
+    //             el: to.hash,
+    //         }
+
+    //     }
+    // },
+    scrollBehavior(to, from, savedPosition) {
+        if (to.hash) {
+            // this.app.$scrollTo(to.hash, 700);
+            return { el: to.hash, }
+        } else {
+            //When the route changes, the page should scroll back to the top.
+            // this.app.$scrollTo('#app', 700);
+            return {
+                top: 0,
+                behavior: "instant"
+            }
+        }
+    }
 });
 
 //4 - esportare il router
