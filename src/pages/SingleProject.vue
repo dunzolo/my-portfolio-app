@@ -6,10 +6,10 @@ export default {
         return {
             store,
             project: null,
-            window: {
-                width: 0,
-                height: 0
-            }
+            // window: {
+            //     width: 0,
+            //     height: 0
+            // }
         }
     },
     methods: {
@@ -18,19 +18,19 @@ export default {
                 .push({ path: '/' })
                 .then(() => { this.$router.go() })
         },
-        handleScroll() {
-            window.scrollTo(0, 0);
-        },
-        handleResize() {
-            this.window.width = window.innerWidth;
-            this.window.height = window.innerHeight;
-        },
+        // handleScroll() {
+        //     window.scrollTo(0, 0);
+        // },
+        // handleResize() {
+        //     this.window.width = window.innerWidth;
+        //     this.window.height = window.innerHeight;
+        // },
     },
     created() {
         //alla creazione porto la visualizzazione nella parte superiore della pagina
-        this.handleScroll();
-        window.addEventListener('resize', this.handleResize);
-        this.handleResize();
+        // this.handleScroll();
+        // window.addEventListener('resize', this.handleResize);
+        // this.handleResize();
 
         //usando il parametro nella rotta, cerco il rispettivo ID
         this.project = store.projects.find((p) => p.id == this.$route.params.id);
@@ -69,7 +69,7 @@ export default {
                 <h2 class="content-title">Links</h2>
                 <a :href="this.project.link_website" class="btn btn-sm website">Sito web</a>
                 <a :href="this.project.link_github" class="btn btn-sm github">Repo GitHub</a>
-                <router-link :to="{ name: 'homepage' }" class="btn btn-sm back">
+                <router-link :to="{ name: 'homepage', hash: '#projects' }" class="btn btn-sm back">
                     Indietro
                 </router-link>
             </div>
