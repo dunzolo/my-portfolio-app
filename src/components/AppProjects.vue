@@ -70,10 +70,11 @@ export default defineComponent({
 .swiper {
     height: 100%;
     width: 95%;
-    border-radius: 20px;
+    // border-radius: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
+    z-index: 0;
 
     .slide {
         width: 30rem;
@@ -143,6 +144,7 @@ export default defineComponent({
     // background-image: linear-gradient(to top left, blueviolet, rgb(73, 31, 112));
     // background-image: url('/public/my-portfolio-boolflix.jpg');
     background-size: cover;
+    background-position: center;
     margin-bottom: 4px;
 }
 

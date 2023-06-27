@@ -5,10 +5,33 @@ export default {
     data() {
         return {
             store,
-            project: null
+            project: null,
+            window: {
+                width: 0,
+                height: 0
+            }
         }
     },
+    methods: {
+        goBack() {
+            this.$router
+                .push({ path: '/' })
+                .then(() => { this.$router.go() })
+        },
+        handleScroll() {
+            window.scrollTo(0, 0);
+        },
+        handleResize() {
+            this.window.width = window.innerWidth;
+            this.window.height = window.innerHeight;
+        },
+    },
     created() {
+        //alla creazione porto la visualizzazione nella parte superiore della pagina
+        this.handleScroll();
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+
         //usando il parametro nella rotta, cerco il rispettivo ID
         this.project = store.projects.find((p) => p.id == this.$route.params.id);
     },
@@ -21,7 +44,7 @@ export default {
             <div class="col info">
                 <h1 class="title">{{ this.project.title }}</h1>
                 <div class="desc">
-                    <p>Questa pagina contiene la presentazione del progetto web di {{ this.project.title }} che include un'anteprima con relativa descrizione, tecnologie utilizzate e links associati</p>
+                    <p>Questa pagina contiene la presentazione del progetto web {{ this.project.title }} che include un'anteprima con relativa descrizione, tecnologie utilizzate e links associati</p>
                 </div>
                 <div class="show-down">
                     <a href="#details" class="btn">Continua</a>
@@ -44,9 +67,11 @@ export default {
             </div>
             <div class="content-links">
                 <h2 class="content-title">Links</h2>
-                <a href="" class="btn btn-sm website">Sito web</a>
+                <a :href="this.project.link_website" class="btn btn-sm website">Sito web</a>
                 <a :href="this.project.link_github" class="btn btn-sm github">Repo GitHub</a>
-                <a href="/" class="btn btn-sm back">Indietro</a>
+                <router-link :to="{ name: 'homepage' }" class="btn btn-sm back">
+                    Indietro
+                </router-link>
             </div>
         </div>
     </div>
@@ -101,6 +126,7 @@ export default {
 
 .content {
     margin: auto;
+    padding-bottom: 3rem;
     max-width: 70rem;
 
     .content-desc,
