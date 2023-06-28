@@ -47,9 +47,21 @@ export default {
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-body">
                     <ul class="sidemenu__list">
-                        <li><a href="#about-me"><span class="index">01.</span> Chi Sono</a></li>
-                        <li><a href="#experience"><span class="index">02.</span> Esperienza</a></li>
-                        <li><a href="#projects"><span class="index">03.</span> Progetti</a></li>
+                        <li data-bs-dismiss="offcanvas">
+                            <router-link :to="{ name: 'homepage', hash: '#about-me' }">
+                                <span class="index">01.</span>Chi Sono
+                            </router-link>
+                        </li>
+                        <li data-bs-dismiss="offcanvas">
+                            <router-link :to="{ name: 'homepage', hash: '#experience' }">
+                                <span class="index">02.</span>Esperienza
+                            </router-link>
+                        </li>
+                        <li data-bs-dismiss="offcanvas">
+                            <router-link :to="{ name: 'homepage', hash: '#projects' }">
+                                <span class="index">03.</span>Progetti
+                            </router-link>
+                        </li>
                         <li><a href=""><span class="index">04.</span> Contattami</a></li>
                     </ul>
                 </div>
