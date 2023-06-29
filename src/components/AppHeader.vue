@@ -108,6 +108,9 @@ header {
                     padding: 10px;
 
                     a {
+                        font-size: 1.6rem;
+                        letter-spacing: 1px;
+                        transition: color .3s;
                         text-decoration: none;
                         color: black;
 

@@ -63,7 +63,7 @@ export default defineComponent({
 @use '../style/partials/mixins' as *;
 
 .coverflow-example {
-    height: 28rem;
+    height: 35rem;
     position: relative;
 }
 
@@ -71,14 +71,14 @@ export default defineComponent({
     height: 100%;
     width: 95%;
     // border-radius: 20px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 3rem;
+    // padding-bottom: 50px;
     position: relative;
     z-index: 0;
 
     .slide {
-        width: 30rem;
-        height: 20rem;
+        width: 40rem;
+        height: 27rem;
 
         img {
             display: block;
@@ -101,12 +101,12 @@ export default defineComponent({
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 10px 20px;
 
     .post-card-top {
         display: flex;
         align-items: center;
-        margin-bottom: 0.5rem;
     }
 }
 
@@ -125,18 +125,19 @@ export default defineComponent({
         right: 50%;
         transform: translate(50%, -60%);
         font-weight: 600;
+        font-size: 2rem;
     }
 }
 
 .title {
-    font-size: 20px;
+    font-size: 2.5rem;
     font-weight: 600;
     color: #fff;
     transition: all .35s ease-in;
 }
 
 .image-preview {
-    flex: 1;
+    // flex: 1;
     min-height: 150px;
     width: 100%;
     border-radius: 20px;
@@ -144,8 +145,9 @@ export default defineComponent({
     // background-image: linear-gradient(to top left, blueviolet, rgb(73, 31, 112));
     // background-image: url('/public/my-portfolio-boolflix.jpg');
     background-size: cover;
-    background-position: center;
-    margin-bottom: 4px;
+    // background-position: center;
+    // margin-bottom: 1rem;
+
 }
 
 .comment-like {
@@ -157,6 +159,21 @@ export default defineComponent({
     .btn {
         background-color: $secondary_color;
         font-weight: 600;
+        font-size: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .swiper {
+        width: 100%;
+
+        .slide {
+            width: 100%;
+        }
+    }
+
+    .swiper-3d {
+        perspective: null;
     }
 }
 </style>

@@ -3,6 +3,87 @@ import { reactive } from 'vue';
 export const store = reactive({
     navOpen: false,
 
+    //icone front-end
+    icon_front_end: [
+        {
+            name: "HTML5",
+            icon: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg"
+        },
+        {
+            name: "CSS3",
+            icon: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg"
+        },
+        {
+            name: "Bootstrap",
+            icon: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg"
+        },
+        {
+            name: "SASS",
+            icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg"
+        },
+        {
+            name: "VueJS",
+            icon: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/vuejs-colored.svg"
+        },
+        {
+            name: "Javascript",
+            icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+        }
+    ],
+
+    //icone back-end
+    icon_back_end: [
+        {
+            name: "PHP",
+            icon: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg"
+        },
+        {
+            name: "Larvel",
+            icon: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/laravel-colored.svg"
+        },
+        {
+            name: "MySQL",
+            icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+        }
+    ],
+
+    //elenco esperienze
+    experiences: [
+        {
+            title: "Experis Academy",
+            name: "Java Developer Trainee",
+            period: "Experis Academy | mag 2023 - giu 2023",
+            description: "Teoria, esercizi pratici, progetti sul framework <strong>Spring</strong> e linguaggio <strong>Java</strong>",
+        },
+        {
+            title: "Boolean",
+            name: "Jr Full Stack Web Developer Trainee",
+            period: "Boolean Careers | ott 2022 - mar 2023",
+            description: "Durante il percorso con Boolean ho avuto modo di applicare le tecnologie <strong>Front-end</strong> e <strong>Back-end</strong> realizzando partendo da zero, sia in autonomia che in team, vari progetti di sviluppo web.",
+        },
+        {
+            title: "TAIC",
+            name: "Responsabile della Produzione",
+            period: "T.A.I.C. srl | apr 2016 - set 2022",
+            sector: "Settore: <strong>Automazioni elettriche industriali</strong>",
+            description:
+                "<ul class=\"ps-4\">" +
+                "<li>concordare gli impegni in base al programma lavori stabilito</li>" +
+                "<li> monitorare e risolvere eventuali problemi legati all\’attività produttiva</li>" +
+                "<li>verificare che la quantità e la qualità dei prodotti rispetti le esigenze del cliente</li>" +
+                "<li>controllo e gestione ordini materiali di utilizzo</li>" +
+                "</ul>"
+        },
+        {
+            title: "Elfo",
+            name: "Software Developer Assistant - Stage",
+            period: "Elfo srl | gen 2015 - giu 2015",
+            sector: "Settore: <strong>Software house</strong>",
+            description: "Durante il periodo trascorso ho avuto modo di <strong>sviluppare software</strong> utilizzando il linguaggio <strong>C#</strong> e svolgere attività su database tramite <strong>SQL Server</strong>",
+        }
+
+    ],
+
     //elenco progetti
     projects: [
         //Boolflix

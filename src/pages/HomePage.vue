@@ -1,4 +1,5 @@
 <script>
+import { store } from '../store';
 import AppProjects from '../components/AppProjects.vue';
 export default {
     components: {
@@ -6,6 +7,7 @@ export default {
     },
     data() {
         return {
+            store,
             is_active: 'btn-0'
         }
     },
@@ -20,9 +22,11 @@ export default {
                 document.getElementById(this.is_active).classList.remove('active');
                 document.getElementById(id).classList.add('active');
                 this.is_active = id;
-
             }
         }
+    },
+    mounted() {
+        document.getElementById(this.is_active).classList.add('active');
     },
 }
 </script>
@@ -41,34 +45,26 @@ export default {
         <section id="about-me">
             <div class="container p-0">
                 <div class="row">
-                    <!-- presentation -->
                     <div class="col-lg-8 pe-lg-3 col-md-12 p-md-0">
+                        <!-- presentation -->
                         <div class="pb-3">
-                            <h2 class="greeting pb-3"><span class="index">01.</span> Chi sono</h2>
-                            <p class="">
+                            <h2 class="heading-sec pb-3"><span class="index">01.</span> Chi sono</h2>
+                            <p class="presentation">
                                 Ciao, mi chiamo Davide Rossi Sono sempre stato un appassionato della tecnologia e di computer, ho deciso di dedicarmi intensamente alla programmazione web perchè mi affascina dal punto di vista realizzativo: mettere mano al codice, essere creativi e veder crescere sempre di più il proprio progetto.
                                 Per rimanere al passo con la tecnologia, bisogna essere in continua evoluzione e di conseguenza non si smette mai di imparare qualcosa di nuovo
                             </p>
-                            <p>"𝑵𝒐𝒃𝒐𝒅𝒚 𝒒𝒖𝒆𝒖𝒆𝒔 𝒇𝒐𝒓 𝒂 𝒇𝒍𝒂𝒕 𝒓𝒐𝒍𝒍𝒆𝒓𝒄𝒐𝒂𝒔𝒕𝒆𝒓"</p>                            
                         </div>
                         <!-- skills -->
                         <div>
-                            <h3 class="description"><span class="index">#</span>Skills</h3>
-                            <h4>Front-end</h4>
+                            <h3 class="heading-third"><span class="index">#</span>Skills</h3>
                             <div>
-                                <div>
-                                    <img class="icon" src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" alt="HTML5" />
-                                    <img class="icon" src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" alt="CSS3" />
-                                    <img class="icon" src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg" alt="Bootstrap" />
-                                    <img class="icon" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg" alt="SASS" />
-                                    <img class="icon" src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/vuejs-colored.svg" alt="VueJS" />
-                                    <img class="icon" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" />
+                                <div class="mb-3">
+                                    <h4 class="type-skill mb-2">Front-end</h4>
+                                    <img class="icon" v-for="(item, index) in store.icon_front_end" :key="index" :src="item.icon" :alt="item.name">
                                 </div>
                                 <div>
-                                    <h4>Back-end</h4>
-                                    <img class="icon" src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg" alt="PHP" />
-                                    <img class="icon" src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/laravel-colored.svg" alt="Larvel" />
-                                    <img class="icon" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" />
+                                    <h4 class="type-skill mb-2">Back-end</h4>
+                                    <img class="icon" v-for="(item, index) in store.icon_back_end" :key="index" :src="item.icon" :alt="item.name">
                                 </div>
                             </div>
                         </div>
@@ -85,49 +81,23 @@ export default {
             <div class="container p-0">
                 <div class="row d-flex justify-content-center">
                     <div class="col-10">
-                        <h2 class="greeting pb-3"><span class="index">02.</span> Esperienza</h2>
+                        <h2 class="heading-sec pb-3"><span class="index">02.</span> Esperienza</h2>
                         <div class="row">
                             <div class="col-3 d-flex flex-column">
-                                <button id="btn-0" type="button" class="work active" @click="isActive($event.target.id)">Experis Academy</button>
-                                <button id="btn-1" type="button" class="work" @click="isActive($event.target.id)">Boolean</button>
-                                <button id="btn-2" type="button" class="work" @click="isActive($event.target.id)">TAIC</button>
-                                <button id="btn-3" type="button" class="work" @click="isActive($event.target.id)">Elfo</button>
+                                <button type="button" class="work-company" :id="'btn-' + index" 
+                                    v-for="(item, index) in store.experiences" :key="index"
+                                    @click="isActive($event.target.id)">
+                                        {{ item.title}}
+                                </button>
                             </div>
                             <div class="col-9">
-                                <div :class="this.is_active == 'btn-0' ? 'd-block' : 'd-none'">
-                                    <p><strong>Java Developer Trainee</strong></p>
-                                    <p>Experis Academy | mag 2023 - giu 2023</p>
+                                <div v-for="(item, index) in store.experiences" :key="index" 
+                                    :class="this.is_active == 'btn-' + index ? 'd-block' : 'd-none'">
+                                    <p class="work-desc bold">{{ item.name }}</p>
+                                    <p class="work-desc">{{ item.period }}</p>
                                     <hr>
-                                    <p>Teoria, esercizi pratici, progetti sul framework <strong>Spring</strong> e linguaggio <strong>Java</strong></p>
-                                </div>
-                                <div :class="this.is_active == 'btn-1' ? 'd-block' : 'd-none'">
-                                    <p><strong>Jr Full Stack Web Developer Trainee</strong></p>
-                                    <p>Boolean Careers | ott 2022 - mar 2023</p>
-                                    <hr>
-                                    <p>
-                                        Durante il percorso con Boolean ho avuto modo di applicare le tecnologie <strong>Front-end</strong> e <strong>Back-end</strong> realizzando partendo da zero, sia in autonomia che in team, vari progetti di sviluppo web.
-                                    </p>
-                                </div>
-                                <div :class="this.is_active == 'btn-2' ? 'd-block' : 'd-none'">
-                                    <p><strong>Responsabile della Produzione</strong></p>
-                                    <p>T.A.I.C. srl | apr 2016 - set 2022</p>
-                                    <hr>
-                                    <p>Settore: Automazioni elettriche industriali</p>
-                                    <ul class="ps-4">
-                                        <li>concordare gli impegni in base al programma lavori stabilito</li>
-                                        <li> monitorare e risolvere eventuali problemi legati all’attività produttiva</li>
-                                        <li>verificare che la quantità e la qualità dei prodotti rispetti le esigenze del cliente</li>
-                                        <li>controllo e gestione ordini materiali di utilizzo</li>
-                                    </ul>
-                                </div>
-                                <div :class="this.is_active == 'btn-3' ? 'd-block' : 'd-none'">
-                                    <p><strong>Software Developer Assistant - Stage</strong></p>
-                                    <p>Elfo srl | gen 2015 - giu 2015</p>
-                                    <hr>
-                                    <p>Settore: Software house</p>
-                                    <p>
-                                        Durante il periodo trascorso ho avuto modo di <strong>sviluppare software</strong> utilizzando il linguaggio <strong>C#</strong> e svolgere attività su database tramite <strong>SQL Server</strong>
-                                    </p>
+                                    <p class="work-desc" v-if="item.sector" v-html="item.sector"></p>
+                                    <p class="work-desc" v-html="item.description"></p>
                                 </div>
                             </div>
 
@@ -140,7 +110,7 @@ export default {
         <!-- projects -->
         <section id="projects">
             <div class="container p-0">
-                <h2 class="greeting pb-3"><span class="index">03.</span> Progetti</h2>
+                <h2 class="heading-sec pb-3"><span class="index">03.</span> Progetti</h2>
                 <div class="row">
                     <AppProjects/>
                 </div>
@@ -157,13 +127,31 @@ export default {
 #about-me,
 #experience,
 #projects {
-    padding: 5rem 0;
+    padding: 10rem 0;
+
+    .heading-sec {
+        font-size: 4rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .heading-third {
+        font-size: 2.8rem;
+        font-weight: 600;
+    }
+
+    .index {
+        color: $secondary_color;
+    }
 }
 
 .full-content {
     width: 100%;
     padding: 0 100px;
 
+    //------------------------
+    //section home page
+    //------------------------
     .content {
         width: 100%;
         height: 100%;
@@ -176,113 +164,141 @@ export default {
         .greeting,
         .description {
             font-family: 'Barlow Semi Condensed';
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 400;
         }
 
         .name {
             font-family: 'Barlow Semi Condensed';
             color: $secondary_color;
-            font-size: 5rem;
-            font-weight: 700;
+            font-size: 8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
+
 
     }
 
-    .image {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
+    //------------------------
+    //section about me
+    //------------------------
+    #about-me {
+        .presentation {
+            font-size: 2rem;
+        }
 
-        img {
+        .type-skill {
+            font-weight: 600;
+            font-size: 2rem;
+
+        }
+
+        .icon {
+            width: 50px;
+            padding-right: 10px;
             mix-blend-mode: multiply;
-
             filter: grayscale(100%) contrast(1);
-            width: 100%;
-
-            &:hover {
-
-                filter: none;
-            }
-        }
-    }
-
-    .project-image {
-        img {
-            mix-blend-mode: multiply;
-            filter: grayscale(100%);
-
-
-            width: 100%;
 
             &:hover {
                 filter: none;
+                scale: 1.2;
+                transition: .3s;
+            }
+
+            &:not(:hover) {
+                transition: .3s;
             }
         }
+
+        .image {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+
+            img {
+                mix-blend-mode: multiply;
+
+                filter: grayscale(100%) contrast(1);
+                width: 100%;
+
+                &:hover {
+                    filter: none;
+                    transition: .3s;
+                }
+
+                &:not(:hover) {
+                    transition: .3s;
+                }
+            }
+        }
+
+        .project-image {
+            img {
+                mix-blend-mode: multiply;
+                filter: grayscale(100%);
+
+
+                width: 100%;
+
+                &:hover {
+                    filter: none;
+                }
+            }
+        }
+
     }
 
-    .project-caption {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+    //------------------------
+    //section experience
+    //------------------------
+    #experience {
+        .work-company {
+            padding: 5px 0;
+            background-color: transparent;
+            border: none;
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.8rem;
 
-    .caption {
-        z-index: 1;
-        width: 120%;
-        background-color: $primary_color;
-        padding: 1rem;
-        font-size: 15px;
-    }
+            &:hover {
+                transition: .3s;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
 
-    .tech-list {
-        list-style-type: none;
-        display: flex;
+            &:not(:hover) {
+                transition: .3s;
+            }
+        }
 
-        li {
-            padding: 0 10px 10px 0;
+        .work-desc {
+            font-size: 1.5rem;
+
+            &.bold {
+                font-weight: 700;
+            }
+        }
+
+        .d-block,
+        .d-none {
+            transition: 2s;
+        }
+
+
+        .active {
+            border-left: 2px solid $secondary_color;
+            color: $secondary_color;
+            transition: .3s;
         }
     }
-
-    .icon {
-        width: 50px;
-        padding-right: 10px;
-        mix-blend-mode: multiply;
-        filter: grayscale(100%) contrast(1);
-
-        &:hover {
-            filter: none;
-            scale: 1.2;
-        }
-    }
-
-    .index {
-        color: $secondary_color;
-    }
 }
 
-.work {
-    padding: 5px 0;
-    background-color: transparent;
-    border: none;
-    border-left: 2px solid rgba(255, 255, 255, 0.3);
-    ;
 
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-}
 
-.active {
-    border-left: 2px solid $secondary_color;
-    color: $secondary_color;
-}
 
-@media screen and (max-width:1080px) {
+
+@media screen and (max-width:991px) {
     .full-content {
         padding: 0 50px;
     }
-
 }
 
 @media screen and (max-width:991px) {

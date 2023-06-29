@@ -155,7 +155,7 @@ export default {
                 padding: 1rem 2rem;
                 margin-bottom: 1rem;
                 margin-right: 1rem;
-                font-size: 1rem;
+                font-size: 1.4rem;
                 font-weight: 600;
                 background: rgba(153, 153, 153, 0.2);
                 // color: rgba(0, 0, 0, 0.7);
@@ -166,7 +166,7 @@ export default {
 
         .btn {
             padding: 1rem 3rem;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             border-radius: 5px;
             font-weight: 600;
             margin-right: 1.5rem;
