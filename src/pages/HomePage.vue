@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store';
+import emailjs from '@emailjs/browser';
 import AppProjects from '../components/AppProjects.vue';
 export default {
     components: {
@@ -8,7 +9,8 @@ export default {
     data() {
         return {
             store,
-            is_active: 'btn-0'
+            is_active: 'btn-0',
+            is_submit: false
         }
     },
     methods: {
@@ -23,6 +25,16 @@ export default {
                 document.getElementById(id).classList.add('active');
                 this.is_active = id;
             }
+        },
+        sendEmail() {
+            this.is_submit = true;
+            emailjs.sendForm('service_whgafph', 'template_r8p4tir', this.$refs.form, 'shOS1eRBqmgxrAk0Z')
+                .then((result) => {
+                    this.$refs.form.reset();
+                    this.is_submit = false;
+                }, (error) => {
+                    console.log('FAILED...', error.text);
+                });
         }
     },
     mounted() {
@@ -117,6 +129,35 @@ export default {
             </div>
         </section>
 
+        <!-- contact -->
+        <section id="contact">
+            <div class="container p-0">
+                <h2 class="heading-sec pb-3"><span class="index">04.</span> Contattami</h2>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-8">
+                        <form ref="form" @submit.prevent="sendEmail">
+                            <div class="mb-3">
+                                <label class="form-label">Nome e Cognome</label>
+                                <input type="text" class="form-control" placeholder="Mario Bianchi" name="user_name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="nome@email.com" name="user_email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Messaggio</label>
+                                <textarea class="form-control" rows="5" name="message" placeholder="Scrivi il tuo messaggio" required></textarea>
+                            </div>
+                            <button id="btn-submit" type="submit" class="btn btn-primary" :disabled="is_submit">
+                                <span v-if="is_submit == false"><i class="fa-solid fa-paper-plane pe-3"></i>INVIA</span>
+                                <span v-else><i class="fa-solid fa-ban pe-3 "></i>INVIA</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 </template>
 
@@ -126,7 +167,8 @@ export default {
 
 #about-me,
 #experience,
-#projects {
+#projects,
+#contact {
     padding: 10rem 0;
 
     .heading-sec {
@@ -270,7 +312,7 @@ export default {
         }
 
         .work-desc {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
 
             &.bold {
                 font-weight: 700;
@@ -287,6 +329,37 @@ export default {
             border-left: 2px solid $secondary_color;
             color: $secondary_color;
             transition: .3s;
+        }
+    }
+
+    //------------------------
+    //section contact
+    //------------------------
+    #contact {
+        label {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        input,
+        textarea {
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        .btn {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 0.5rem 3rem;
+            background-color: $secondary_color;
+            border: none;
+            box-shadow: 0 10px 15px 0 rgba($color: #000000, $alpha: 0.5);
+            border-radius: 5px;
+
+            &:hover,
+            &:disabled {
+                background-color: $primary_color;
+            }
         }
     }
 }

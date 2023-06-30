@@ -32,7 +32,11 @@ export default {
                             <span class="index">03.</span>Progetti
                         </router-link>
                     </li>
-                    <li><a href=""><span class="index">04.</span> Contattami</a></li>
+                    <li>
+                        <router-link :to="{ name: 'homepage', hash: '#contact' }">
+                            <span class="index">04.</span>Contattami
+                        </router-link>
+                    </li>
                 </ul>
             </div>
             <div id="sidemenu">
