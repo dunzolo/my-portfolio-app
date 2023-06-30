@@ -10,10 +10,18 @@ export default {
         return {
             store,
             is_active: 'btn-0',
-            is_submit: false
+            is_submit: false,
+            window: {
+                width: 0,
+                height: 0
+            }
         }
     },
     methods: {
+        handleResize() {
+            this.window.width = window.innerWidth;
+            this.window.height = window.innerHeight;
+        },
         isActive(id) {
             if (this.is_active == 'btn-0') {
                 document.getElementById('btn-0').classList.remove('active');
@@ -26,6 +34,9 @@ export default {
                 this.is_active = id;
             }
         },
+        isNuovo(id) {
+            this.is_active = id;
+        },
         sendEmail() {
             this.is_submit = true;
             emailjs.sendForm('service_whgafph', 'template_r8p4tir', this.$refs.form, 'shOS1eRBqmgxrAk0Z')
@@ -36,6 +47,10 @@ export default {
                     console.log('FAILED...', error.text);
                 });
         }
+    },
+    created() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
     },
     mounted() {
         document.getElementById(this.is_active).classList.add('active');
@@ -92,9 +107,9 @@ export default {
         <section id="experience">
             <div class="container p-0">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-10">
+                    <div class="col-12 col-md-10">
                         <h2 class="heading-sec pb-3"><span class="index">02.</span> Esperienza</h2>
-                        <div class="row">
+                        <div v-if="this.window.width >= 576" class="row">
                             <div class="col-3 d-flex flex-column">
                                 <button type="button" class="work-company" :id="'btn-' + index" 
                                     v-for="(item, index) in store.experiences" :key="index"
@@ -112,7 +127,26 @@ export default {
                                     <p class="work-desc" v-html="item.description"></p>
                                 </div>
                             </div>
-
+                        </div>
+                        <div v-if="this.window.width < 576" class="row">
+                            <div class="col-12 mb-2">
+                                <select class="form-select" @change="isNuovo($event.target.value)">
+                                    <option v-for="(item, index) in store.experiences" 
+                                        :value="'btn-' + index">
+                                            {{ item.title}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div v-for="(item, index) in store.experiences" :key="index" 
+                                    :class="this.is_active == 'btn-' + index ? 'd-block' : 'd-none'">
+                                    <p class="work-desc bold">{{ item.name }}</p>
+                                    <p class="work-desc">{{ item.period }}</p>
+                                    <hr>
+                                    <p class="work-desc" v-if="item.sector" v-html="item.sector"></p>
+                                    <p class="work-desc" v-html="item.description"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -329,6 +363,12 @@ export default {
             border-left: 2px solid $secondary_color;
             color: $secondary_color;
             transition: .3s;
+        }
+
+        .form-select {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-size: 1.6rem;
+            font-style: italic;
         }
     }
 
