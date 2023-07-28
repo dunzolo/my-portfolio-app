@@ -44,6 +44,14 @@ export const store = reactive({
         {
             name: "MySQL",
             icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+        },
+        {
+            name: "JAVA",
+            icon: "https://www.vectorlogo.zone/logos/java/java-icon.svg"
+        },
+        {
+            name: "SpringBoot",
+            icon: "https://www.vectorlogo.zone/logos/springio/springio-icon.svg"
         }
     ],
 
@@ -53,7 +61,7 @@ export const store = reactive({
             title: "Experis Academy",
             name: "Java Developer Trainee",
             period: "Experis Academy | mag 2023 - giu 2023",
-            description: "Teoria, esercizi pratici, progetti sul framework <strong>Spring</strong> e linguaggio <strong>Java</strong>",
+            description: "Percorso formativo in cui ho avuto modo di approfondire i fondamentali dell'OOP tramite il linguaggio <strong>JAVA</strong>, il tutto seguendo lezioni di teoria ed esercitazioni pomeridiane svolte in autonomia utilizzando <strong>Spring Boot MVC</strong> (CRUD, autenticazioni e API) con il supporto di <strong>Thymeleaf</strong>",
         },
         {
             title: "Boolean",

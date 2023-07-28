@@ -65,8 +65,8 @@ export default {
                     <div class="single-skill" v-for="skill in this.project.skills">{{ skill }}</div>
                 </div>
             </div>
+            <h2 class="content-title">Links</h2>
             <div class="content-links">
-                <h2 class="content-title">Links</h2>
                 <a :href="this.project.link_website" class="btn btn-sm website">Sito web</a>
                 <a :href="this.project.link_github" class="btn btn-sm github">Repo GitHub</a>
                 <router-link :to="{ name: 'homepage', hash: '#projects' }" class="btn btn-sm back">
@@ -129,16 +129,17 @@ export default {
     padding-bottom: 3rem;
     max-width: 70rem;
 
+    .content-title {
+        margin-bottom: 3rem;
+        font-weight: 600;
+        font-size: 2.5rem;
+    }
+
     .content-desc,
     .content-tools,
     .content-links {
         margin: 0 0 7rem 0;
 
-        .content-title {
-            margin-bottom: 3rem;
-            font-weight: 600;
-            font-size: 2.5rem;
-        }
 
         .content-paragraph {
             font-size: 1.8rem;
@@ -183,5 +184,21 @@ export default {
         }
     }
 
+}
+
+@media screen and (max-width: 576px) {
+    .content .content-links {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        a {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .image img {
+        width: 110%;
+    }
 }
 </style>

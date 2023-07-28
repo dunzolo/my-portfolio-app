@@ -72,10 +72,13 @@ export default {
         <section id="about-me">
             <div class="container p-0">
                 <div class="row">
-                    <div class="col-lg-8 pe-lg-3 col-md-12 p-md-0">
+                    <h2 class="heading-sec pb-3"><span class="index">01.</span> Chi sono</h2>
+                    <div class="col-lg-5 pe-lg-3 col-md-12 p-md-0 image">
+                        <img src="/public/my-portfolio-image-about-me.png" alt="image-about-me">
+                    </div>
+                    <div class="col-lg-7 ps-lg-3 col-md-12 pt-3">
                         <!-- presentation -->
                         <div class="pb-3">
-                            <h2 class="heading-sec pb-3"><span class="index">01.</span> Chi sono</h2>
                             <p class="presentation">
                                 Ciao, mi chiamo Davide Rossi Sono sempre stato un appassionato della tecnologia e di computer, ho deciso di dedicarmi intensamente alla programmazione web perchè mi affascina dal punto di vista realizzativo: mettere mano al codice, essere creativi e veder crescere sempre di più il proprio progetto.
                                 Per rimanere al passo con la tecnologia, bisogna essere in continua evoluzione e di conseguenza non si smette mai di imparare qualcosa di nuovo
@@ -87,7 +90,7 @@ export default {
                             <div>
                                 <div class="mb-3">
                                     <h4 class="type-skill mb-2">Front-end</h4>
-                                    <img class="icon" v-for="(item, index) in store.icon_front_end" :key="index" :src="item.icon" :alt="item.name">
+                                    <img class="icon" v-for="(item, index) in store.icon_front_end" :key="index" :src="item.icon" :alt="item.name" :name="item.name">
                                 </div>
                                 <div>
                                     <h4 class="type-skill mb-2">Back-end</h4>
@@ -96,9 +99,9 @@ export default {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 image">
-                        <img src="/public/my-portfolio-image-about-me.png" alt="">
-                    </div>
+                    <!-- <div class="col-lg-4 col-md-12 image">
+                        <img src="/public/my-portfolio-image-about-me.png" alt="image-about-me">
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -272,11 +275,11 @@ export default {
         .icon {
             width: 50px;
             padding-right: 10px;
-            mix-blend-mode: multiply;
-            filter: grayscale(100%) contrast(1);
+            // mix-blend-mode: multiply;
+            // filter: grayscale(100%) contrast(1);
 
             &:hover {
-                filter: none;
+                // filter: none;
                 scale: 1.2;
                 transition: .3s;
             }
@@ -290,21 +293,22 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: start;
+            align-items: center;
 
             img {
-                mix-blend-mode: multiply;
+                // mix-blend-mode: multiply;
+                // filter: grayscale(100%) contrast(1);
+                width: 300px;
 
-                filter: grayscale(100%) contrast(1);
-                width: 100%;
 
-                &:hover {
-                    filter: none;
-                    transition: .3s;
-                }
+                // &:hover {
+                //     filter: none;
+                //     transition: .3s;
+                // }
 
-                &:not(:hover) {
-                    transition: .3s;
-                }
+                // &:not(:hover) {
+                //     transition: .3s;
+                // }
             }
         }
 
@@ -312,8 +316,6 @@ export default {
             img {
                 mix-blend-mode: multiply;
                 filter: grayscale(100%);
-
-
                 width: 100%;
 
                 &:hover {
@@ -446,6 +448,10 @@ export default {
 @media screen and (max-width: 576px) {
     .content {
         padding: 0;
+    }
+
+    .full-content #about-me .image img {
+        width: 250px;
     }
 }
 </style>
