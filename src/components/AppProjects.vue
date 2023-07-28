@@ -45,7 +45,7 @@ export default defineComponent({
                         <div class="avatar"><span>{{ item.id }}</span></div>
                         <div class="title"><span>{{ item.title }}</span></div>
                     </div>
-                    <div class="image-preview" :style="{ 'background-image': 'url(' + item.image + ')' }"></div>
+                    <div class="image-preview" :style="{ 'background-image': 'url(./' + item.image + ')' }"></div>
                     <div class="comment-like">
                         <router-link :to="{ name: 'project', params: { id: item.id } }" class="btn btn-sm">
                             Continua a leggere

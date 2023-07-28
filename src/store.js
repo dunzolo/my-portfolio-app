@@ -90,7 +90,7 @@ export const store = reactive({
         {
             id: 1,
             title: 'Boolflix',
-            image: '/public/my-portfolio-boolflix.jpg',
+            image: 'my-portfolio-boolflix.jpg',
             image_project: '/public/my-portfolio-boolflix-pc.png',
             description: [
                 "Boolflix è un semplice motore di ricerca di Film e serie TV, vagamente ispirato a Netflix.",
