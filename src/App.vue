@@ -3,12 +3,14 @@ import { store } from './store.js';
 import AppLogo from './components/AppLogo.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppWrapper from './components/AppWrapper.vue'
+import AppFooter from './components/AppFooter.vue';
 
 export default {
   components: {
     AppLogo,
     AppHeader,
-    AppWrapper
+    AppWrapper,
+    AppFooter
   },
   data() {
     return {
@@ -39,6 +41,7 @@ export default {
       <AppWrapper/>
       <router-view></router-view>
     </main>
+    <AppFooter/>
   </div>
 </template>
 
@@ -51,8 +54,8 @@ export default {
 
 main {
   width: 90%;
-  height: calc(100vh - 80px);
+  // height: calc(100vh - 80px);
   margin: 80px auto 0;
-  display: flex;
+  // display: flex;
 }
 </style>
