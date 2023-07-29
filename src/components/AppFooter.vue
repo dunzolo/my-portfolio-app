@@ -12,7 +12,7 @@ export default {
       <li><a href="https://instagram.com/dunzolo?igshid=ZDdkNTZiNTM="><i class="fa-brands fa-instagram fa-3x"></i></a></li>
       <li><a href="https://discordapp.com/users/1031907022452576276"><i class="fa-brands fa-discord fa-3x"></i></a></li>
     </ul>
-    <h2>Designed & build by Davide Rossi</h2>
+    <h2>© 2023 Davide Rossi</h2>
   </footer>
 </template>
 
