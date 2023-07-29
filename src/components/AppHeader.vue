@@ -3,7 +3,13 @@ import { store } from '../store.js';
 export default {
     data() {
         return {
-            store
+            store,
+            is_active_menu: false
+        }
+    },
+    methods: {
+        isActive() {
+            this.is_active_menu = !this.is_active_menu;
         }
     },
 }
@@ -40,7 +46,8 @@ export default {
                 </ul>
             </div>
             <div id="sidemenu">
-                <button class="sidemenu__btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                <button class="sidemenu__btn" :class="is_active_menu ? 'active' : ''" @click="isActive()"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
                     <span class="top"></span>
                     <span class="mid"></span>
                     <span class="bottom"></span>
@@ -232,6 +239,14 @@ header {
 
     .offcanvas {
         background-color: #cececc;
+
+        &.offcanvas-end {
+            width: 50%;
+
+            a {
+                font-size: 1.6rem;
+            }
+        }
 
     }
 
