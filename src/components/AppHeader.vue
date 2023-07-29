@@ -73,7 +73,7 @@ export default {
                 <span class="index">03.</span>Progetti
               </router-link>
             </li>
-            <li>
+            <li data-bs-dismiss="offcanvas">
               <router-link :to="{ name: 'homepage', hash: '#contact' }" @click.prevent="isActive">
                 <span class="index">04.</span>Contattami
               </router-link>
