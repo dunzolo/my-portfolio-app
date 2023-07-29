@@ -224,7 +224,7 @@ export default {
   //------------------------
   .content {
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 80px);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
